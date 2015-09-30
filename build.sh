@@ -1,4 +1,5 @@
 #!/bin/bash -e
+source /usr/share/modules/init/bash
 # This is the build script for GROMACS
 # ftp://ftp.gromacs.org/pub/gromacs
 SOURCE_REPO="ftp://ftp.gromacs.org/pub/gromacs/"
