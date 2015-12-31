@@ -13,7 +13,7 @@ module add cmake
 # Need to load a scheduler
 module add fftw/3.3.4
 module add openmpi
-
+module add boost
 
 echo "REPO_DIR is "
 echo $REPO_DIR
