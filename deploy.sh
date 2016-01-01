@@ -80,22 +80,6 @@ MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 #### try to use gromacs
-module purge
-module add deploy
-
-module add gmp
-module add mpfr
-module add mpc
-# GCC_VERSION is provided by the build job
-module add gcc/${GCC_VERSION}
-# We need cmake to configure the build
-module add cmake
-# LAPACK has the external linear algebra libraries
-# see http://www.gromacs.org/Documentation/Installation_Instructions_5.0#linear-algebra-libraries
-module add lapack/3.6.0-gcc-${GCC_VERSION}
-module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
-module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add ${NAME}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 echo "binaries available are : "
 ls  ${GMXPREFIX}/bin

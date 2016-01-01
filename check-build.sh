@@ -60,18 +60,9 @@ mkdir -p ${LIBRARIES_MODULES}/${NAME}
 cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${LIBRARIES_MODULES}/${NAME}
 #  check if we can use it.
 echo "Testing the module"
-module purge
-module add ci
-module add gmp
-module add mpfr
-module add mpc
-module add gcc/${GCC_VERSION}
-module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
-module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 echo "Binaries available : "
 ls ${GMXPREFIX}/bin
 source ${GMPREFIX}/bin/GMXRC.sh
-env 
+env
