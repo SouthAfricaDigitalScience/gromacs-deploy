@@ -24,10 +24,12 @@ module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 # check some variables
 
 echo "BOOST DIR is : ${BOOST_DIR}"
+echo "BOOST ROOT is : ${BOOST_ROOT}"
 echo "FFTW3 DIR is : ${FFTW_DIR}"
 echo "OPENMPI DIR is : ${OPENMPI_DIR}"
 echo "LAPACK DIR is : ${LAPACK_DIR}"
 echo "LD_LIBRARY_PATH is : ${LD_LIBRARY_PATH}"
+echo "CFLAGS are : ${CFLAGS}"
 
 echo "BOOST libraries in ${BOOST_DIR}/lib are: "
 ls ${BOOST_DIR}/lib
@@ -79,19 +81,27 @@ echo "now in ${PWD}"
 echo "Setting compilers"
 export CC=mpicc
 export CXX=mpicxx
+# CMake needs BOOST_ROOT
+export BOOST_ROOT=${BOOST_DIR}
 echo "Configuring the build"
-CFLAGS=-fPIC cmake .. \
+export CFLAGS="${CFLAGS} -fPIC"
+cmake .. \
 -G"Unix Makefiles" \
+-DCMAKE_C_COMPILER=mpicc \
+-DCMAKE_CXX_COMPILER=mpicxx \
 -DGMX_X11=OFF \
 -DGMX_FFT_LIBRARY=fftw3 \
--DFFTW_LIBRARY="${FFTW_DIR}/lib/libfftw3l_mpi.so"
+-DFFTW_LIBRARY=${FFTW_DIR}/lib/libfftw3l_mpi.so \
 -DGMX_DOUBLE=ON \
+-DGMX_GPU=OFF \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
 -DGMX_EXTERNAL_BLAS=on \
--DCMAKE_INCLUDE_PATH="${BOOST_DIR}/include:${FFTW_DIR}/include:${OPENMPI_DIR}/include:${LAPACK_DIR}/include" \
--DCMAKE_LIBRARY_PATH="${BOOST_DIR}/lib:${FFTW_DIR}/lib:${OPENMPI_DIR}/lib:${LAPACK_DIR}/lib"
--DCMAKE_PREFIX_PATH="${BOOST_DIR}:${LAPACK_DIR}:${FFTW_DIR}:${OPENMPI_DIR}" \
+-DGMX_BUILD_MDRUN_ONLY=ON \
+-DCMAKE_INCLUDE_PATH="${BOOST_DIR}/include/boost;${FFTW_DIR}/include;${OPENMPI_DIR}/include;${LAPACK_DIR}/include" \
+-DCMAKE_LIBRARY_PATH="${BOOST_DIR}/lib/boost;${FFTW_DIR}/lib:${OPENMPI_DIR}/lib;${LAPACK_DIR}/lib" \
+-DCMAKE_PREFIX_PATH="${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}" \
+-DREGRESSIONTEST_DOWNLOAD \
 -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 echo "Running the build"
