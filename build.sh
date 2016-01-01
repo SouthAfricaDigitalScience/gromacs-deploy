@@ -83,8 +83,7 @@ echo "Configuring the build"
 CFLAGS=-fPIC cmake .. \
 -G"Unix Makefiles" \
 -DGMX_X11=OFF \
--DFFTW_LIBRARY='${FFTW_DIR}/lib/libfftw3.so' \
--DGMX_FFT_LIBRARY=libfft \
+-DGMX_FFT_LIBRARY=fftw3 \
 -DGMX_DOUBLE=ON \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
