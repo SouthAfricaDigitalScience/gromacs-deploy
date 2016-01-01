@@ -84,6 +84,7 @@ CFLAGS=-fPIC cmake .. \
 -G"Unix Makefiles" \
 -DGMX_X11=OFF \
 -DGMX_FFT_LIBRARY=fftw3 \
+-DFFTW_LIBRARY="${FFTW_DIR}/lib/libfftw3l_mpi.so"
 -DGMX_DOUBLE=ON \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
