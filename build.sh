@@ -16,7 +16,7 @@ module add gcc/${GCC_VERSION}
 module add cmake
 # LAPACK has the external linear algebra libraries
 # see http://www.gromacs.org/Documentation/Installation_Instructions_5.0#linear-algebra-libraries
-module add blas/3.6.0-gcc-${GCC_VERSION}
+module add lapack/3.6.0-gcc-${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.59-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
@@ -88,7 +88,7 @@ CFLAGS=-fPIC cmake .. \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
 -DGMX_EXTERNAL_BLAS=on \
--DGMX_BUILD_MDRUN_ONLY=ON \ 
+-DGMX_BUILD_MDRUN_ONLY=ON \
 -DCMAKE_PREFIX_PATH="${BOOST_DIR}:${LAPACK_DIR}:${FFTW_DIR}" \
 -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
