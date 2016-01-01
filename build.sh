@@ -19,14 +19,14 @@ module add cmake
 module add lapack/3.6.0-gcc-${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-module add boost/1.59-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 # check some variables
 
 echo "BOOST DIR is : ${BOOST_DIR}"
 echo "FFTW3 DIR is : ${FFTW_DIR}"
 echo "OPENMPI_DIR is : ${OPENMPI_DIR}"
-echo "BLAS_DIR is : ${BLAS_DIR}"
+echo "BLAS_DIR is : ${LAPACK_DIR}"
 echo "LD_LIBRARY_PATH is : ${LD_LIBRARY_PATH}"
 
 echo "libraries are : "
@@ -34,7 +34,7 @@ ls ${BOOST_DIR}/lib
 echo ""
 ls ${OPENMPI_DIR}/lib
 echo ""
-ls ${BlAS_DIR}/lib
+ls ${LAPACK_DIR}/lib
 echo ""
 ls ${FFTW_DIR}/lib
 
@@ -72,9 +72,10 @@ fi
 
 
 tar -xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
+ls ${WORKSPACE}
 mkdir -p ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
-
+echo "now in ${PWD}"
 echo "Setting compilers"
 export CC=mpicc
 export CXX=mpicxx
