@@ -90,7 +90,7 @@ cmake .. \
 -DCMAKE_C_COMPILER=mpicc \
 -DCMAKE_CXX_COMPILER=mpicxx \
 -DGMX_X11=OFF \
--DGMX_FFT_LIBRARY=fftw3f \
+-DGMX_FFT_LIBRARY=fftw3 \
 -DFFTW_LIBRARY=${FFTW_DIR}/lib/libfftw3f.so \
 -DGMX_DOUBLE=ON \
 -DGMX_GPU=OFF \
