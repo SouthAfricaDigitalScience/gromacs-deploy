@@ -48,7 +48,7 @@ setenv       GMXLDLIB          $::env(GMXPREFIX)/lib
 setenv       GMXMAN            $::env(GMXPREFIX)/share/man
 setenv       GMXDATA           $::env(GMXPREFIX)/share/gromacs
 setenv       GROMACS_DIR       $::env(GMXPREFIX)
-prepend-path LD_LIBRARY_PATH   $::env(GMPREFIX)/lib
+prepend-path LD_LIBRARY_PATH   $::env(GMXPREFIX)/lib
 setenv GMX_INCLUDE_DIR   $::env(GMX_DIR)/include
 setenv GMX_LIB_DIR      $::env(GMX_DIR)/lib
 prepend-path CPATH             $::env(GMX_INCLUDE_DIR)
