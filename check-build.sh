@@ -15,11 +15,7 @@ echo "Making check"
 make check
 echo $?
 echo "Running Make Install"
-# "Warning
-# make install can overwrite or masquerade the python binary. make altinstall is therefore recommended instead of make install since it
-# only installs exec_prefix/bin/pythonversion.
-# see : https://docs.python.org/2/using/unix.html#building-python
-make altinstall
+make install
 
 mkdir -p modules
 
