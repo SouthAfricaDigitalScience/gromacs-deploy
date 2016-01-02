@@ -45,7 +45,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION. Compiled for GCC ${GCC_VERSION} with OpenMPI version ${OPENMPI_VERSION}"
 setenv       GMX_VERSION       $VERSION
-setenv       GMX_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+setenv       GMX_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 setenv       GMXPREFIX         $::env(GMX_DIR)
 setenv       GMXBIN            $::env(GMX_DIR)/bin
 setenv       GMXLDLIB          $::env(GMXPREFIX)/lib
@@ -58,13 +58,13 @@ setenv GMX_LIB_DIR      $::env(GMX_DIR)/lib
 prepend-path CPATH             $::env(GMX_INCLUDE_DIR)
 append-path CFLAGS             "-I$::env(GMX_INCLUDE_DIR) -L$::env(GMX_DIR)/lib"
 MODULE_FILE
-) > modules/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+) > modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
-cp modules/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION} ${LIBRARIES_MODULES}/${NAME}
+cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${LIBRARIES_MODULES}/${NAME}
 #  check if we can use it.
 echo "Testing the module"
-module add ${NAME}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 echo "Binaries available : "
 ls ${GMXPREFIX}/bin
