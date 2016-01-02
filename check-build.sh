@@ -63,7 +63,4 @@ echo "Testing the module"
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 echo "Binaries available : "
-ls ${GMXPREFIX}/bin
-echo "Libraries available : "
-ls ${GMXPREFIX}/lib
 env
