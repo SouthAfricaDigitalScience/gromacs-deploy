@@ -36,7 +36,7 @@ cmake .. \
 -DCMAKE_CXX_COMPILER=mpicxx \
 -DGMX_X11=OFF \
 -DGMX_FFT_LIBRARY=fftw3 \
--DFFTW_LIBRARY=${FFTW_DIR}/lib/libfftw3l.so \
+-DFFTW_LIBRARY="${FFTW_DIR}/lib/libfftw3l.so;${FFTW_DIR}/lib/libfftw3f.so;${FFTW_DIR}/lib/libfftw3.so;${FFTW_DIR}/lib/libfftw3f_mpi.so;${FFTW_DIR}/lib/libfftw3f_omp.so;${FFTW_DIR}/lib/libfftw3f.so;${FFTW_DIR}/lib/libfftw3f_threads.so;${FFTW_DIR}/lib/libfftw3l_mpi.so;${FFTW_DIR}/lib/libfftw3l_omp.so;${FFTW_DIR}/lib/libfftw3l.so${FFTW_DIR}/lib/libfftw3l_threads.so;${FFTW_DIR}/lib/libfftw3_mpi.so${FFTW_DIR}/lib/libfftw3.so" \
 -DGMX_DOUBLE=ON \
 -DGMX_GPU=OFF \
 -DGMX_OPENMP=ON \
