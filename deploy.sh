@@ -46,7 +46,7 @@ cmake .. \
 -DCMAKE_INCLUDE_PATH="${BOOST_DIR}/include/boost;${FFTW_DIR}/include;${OPENMPI_DIR}/include;${LAPACK_DIR}/include" \
 -DCMAKE_LIBRARY_PATH="${BOOST_DIR}/lib/boost;${FFTW_DIR}/lib;${OPENMPI_DIR}/lib;${LAPACK_DIR}/lib" \
 -DCMAKE_PREFIX_PATH="${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}" \
--DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+-DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 make install
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
@@ -77,9 +77,9 @@ prepend-path CPATH             $::env(GMX_INCLUDE_DIR)
 append-path CFLAGS             "-I$::env(GMX_INCLUDE_DIR) -L$::env(GMX_DIR)/lib"
 
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 #### try to use gromacs
-module add ${NAME}/${VERSION}-mpi-${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 echo "binaries available are : "
 ls  ${GMXPREFIX}/bin
