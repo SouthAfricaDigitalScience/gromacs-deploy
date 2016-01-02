@@ -21,8 +21,8 @@ module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 echo "SOFT DIR is ${SOFT_DIR}"
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-
-echo "now in ${PWD}"
+echo "cleaning the previous build "
+rm -rf *
 echo "Setting compilers"
 export CC=mpicc
 export CXX=mpicxx
@@ -47,7 +47,7 @@ cmake .. \
 -DCMAKE_LIBRARY_PATH="${BOOST_DIR}/lib/boost;${FFTW_DIR}/lib;${OPENMPI_DIR}/lib;${LAPACK_DIR}/lib" \
 -DCMAKE_PREFIX_PATH="${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}" \
 -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-
+make -j2
 make install
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
@@ -66,6 +66,7 @@ setenv GMX_VERSION       $VERSION
 setenv GMX_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 setenv       GMXPREFIX         $::env(GMX_DIR)
 setenv       GMXBIN            $::env(GMX_DIR)/bin
+prepend-path PATH              $::env(GMXBIN)
 setenv       GMXLDLIB          $::env(GMXPREFIX)/lib
 setenv       GMXMAN            $::env(GMXPREFIX)/share/man
 setenv       GMXDATA           $::env(GMXPREFIX)/share/gromacs

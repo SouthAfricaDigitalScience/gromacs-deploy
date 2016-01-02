@@ -44,6 +44,7 @@ setenv       GMX_VERSION       $VERSION
 setenv       GMX_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 setenv       GMXPREFIX         $::env(GMX_DIR)
 setenv       GMXBIN            $::env(GMX_DIR)/bin
+prepend-path PATH              $::env(GMXBIN)
 setenv       GMXLDLIB          $::env(GMXPREFIX)/lib
 setenv       GMXMAN            $::env(GMXPREFIX)/share/man
 setenv       GMXDATA           $::env(GMXPREFIX)/share/gromacs
@@ -63,4 +64,5 @@ echo "Testing the module"
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 echo "Binaries available : "
+ls ${GMXPREFIX}/bin
 env
