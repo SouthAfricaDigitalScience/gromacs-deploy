@@ -63,7 +63,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/gromacs-deploy"
 setenv GMX_VERSION       $VERSION
-setenv GMX_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+setenv GMX_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 setenv       GMXPREFIX         $::env(GMX_DIR)
 setenv       GMXBIN            $::env(GMX_DIR)/bin
 setenv       GMXLDLIB          $::env(GMXPREFIX)/lib
