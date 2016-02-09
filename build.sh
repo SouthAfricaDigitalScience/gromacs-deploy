@@ -87,23 +87,20 @@ echo "Configuring the build"
 export CFLAGS="${CFLAGS} -fPIC"
 #-DFFTW_LIBRARY="${FFTW_DIR}/lib/libfftw3l.so;${FFTW_DIR}/lib/libfftw3f.so;${FFTW_DIR}/lib/libfftw3.so;${FFTW_DIR}/lib/libfftw3f_mpi.so;${FFTW_DIR}/lib/libfftw3f_omp.so;${FFTW_DIR}/lib/libfftw3f.so;${FFTW_DIR}/lib/libfftw3f_threads.so;${FFTW_DIR}/lib/libfftw3l_mpi.so;${FFTW_DIR}/lib/libfftw3l_omp.so;${FFTW_DIR}/lib/libfftw3l.so${FFTW_DIR}/lib/libfftw3l_threads.so;${FFTW_DIR}/lib/libfftw3_mpi.so${FFTW_DIR}/lib/libfftw3.so" \
 
-cmake .. \
+cmake ../ \
 -G"Unix Makefiles" \
 -DCMAKE_C_COMPILER=mpicc \
 -DCMAKE_CXX_COMPILER=mpicxx \
 -DGMX_X11=OFF \
 -DGMX_FFT_LIBRARY=fftw3 \
--DGMX_DOUBLE=ON \
+-DGMX_DOUBLE=OFF \
 -DGMX_GPU=OFF \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
 -DGMX_EXTERNAL_BLAS=on \
 -DGMX_BUILD_MDRUN_ONLY=ON \
--DCMAKE_INCLUDE_PATH="${BOOST_DIR}/include/boost;${FFTW_DIR}/include;${OPENMPI_DIR}/include;${LAPACK_DIR}/include" \
--DCMAKE_LIBRARY_PATH="${BOOST_DIR}/lib/boost;${FFTW_DIR}/lib;${OPENMPI_DIR}/lib;${LAPACK_DIR}/lib" \
--DCMAKE_PREFIX_PATH="${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}" \
+-DCMAKE_PREFIX_PATH='${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}' \
 -DREGRESSIONTEST_DOWNLOAD=ON \
--DFFTW_LIBRARY="${FFTW_DIR}/lib/libfftw3.so \ 
 -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 echo "Running the build"
