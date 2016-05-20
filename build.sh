@@ -20,25 +20,7 @@ module add lapack/3.6.0-gcc-${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-
-# check some variables
-
-echo "BOOST DIR is : ${BOOST_DIR}"
-echo "BOOST ROOT is : ${BOOST_ROOT}"
-echo "FFTW3 DIR is : ${FFTW_DIR}"
-echo "OPENMPI DIR is : ${OPENMPI_DIR}"
-echo "LAPACK DIR is : ${LAPACK_DIR}"
-echo "LD_LIBRARY_PATH is : ${LD_LIBRARY_PATH}"
-echo "CFLAGS are : ${CFLAGS}"
-
-echo "BOOST libraries in ${BOOST_DIR}/lib are: "
-ls ${BOOST_DIR}/lib
-echo "MPI libraries in ${OPENMPI_DIR}/lib are :"
-ls ${OPENMPI_DIR}/lib
-echo "LAPACK libraries in ${LAPACK_DIR}/lib* are : "
-ls ${LAPACK_DIR}/lib*
-echo "FFTW libraries in ${FFTW_DIR}/lib are : "
-ls ${FFTW_DIR}/lib
+module add gsl/2.0
 
 echo "REPO_DIR is "
 echo $REPO_DIR
@@ -95,12 +77,13 @@ cmake ../ \
 -DGMX_FFT_LIBRARY=fftw3 \
 -DFFTWF_LIBRARY=${FFTW_DIR}/lib/libfftw3f.so \
 -DFFTWF_INCLUDE_DIR=${FFTW_DIR}/include \
--DGMX_DOUBLE=OFF \
+-DGMX_GSL=ON \
+-DGMX_DOUBLE=ON \
 -DGMX_GPU=OFF \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
 -DGMX_EXTERNAL_BLAS=on \
--DGMX_BUILD_MDRUN_ONLY=ON \
+#-DGMX_BUILD_MDRUN_ONLY=ON \
 -DCMAKE_PREFIX_PATH='${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}' \
 -DREGRESSIONTEST_DOWNLOAD=ON \
 -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}

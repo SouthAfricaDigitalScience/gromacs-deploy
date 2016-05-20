@@ -9,6 +9,7 @@ module add gcc/${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add gsl/2.0
 echo ""
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "Making check"
@@ -20,14 +21,6 @@ make install
 mkdir -p modules
 
 echo "Making CI module"
-
-# according to the gromacs GMXRC file that comes with the distro, these variables need to be set:
-#GMXPREFIX=/usr/local/gromacs
-#GMXBIN=${GMXPREFIX}/bin
-#GMXLDLIB=${GMXPREFIX}/lib
-#GMXMAN=${GMXPREFIX}/share/man
-#GMXDATA=${GMXPREFIX}/share/gromacs
-#GROMACS_DIR=${GMXPREFIX}
 
 (
 cat <<MODULE_FILE
