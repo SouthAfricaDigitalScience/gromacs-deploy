@@ -36,8 +36,8 @@ cmake ../ \
 -DCMAKE_CXX_COMPILER=mpicxx \
 -DGMX_X11=OFF \
 -DGMX_FFT_LIBRARY=fftw3 \
--DFFTWF_LIBRARY=${FFTW_DIR}/lib/libfftw3f.so \
--DFFTWF_INCLUDE_DIR=${FFTW_DIR}/include \
+-DFFTW_LIBRARY=${FFTW_DIR}/lib/libfftw3.so \
+-DFFTW_INCLUDE_DIR=${FFTW_DIR}/include \
 -DGMX_GSL=ON \
 -DGMX_DOUBLE=ON \
 -DGMX_GPU=OFF \
