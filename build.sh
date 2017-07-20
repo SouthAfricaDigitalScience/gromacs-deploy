@@ -7,19 +7,13 @@ SOURCE_REPO="ftp://ftp.gromacs.org/pub/gromacs/"
 SOURCE_FILE="${NAME}-${VERSION}.tar.gz"
 
 module add ci
-module add gmp
-module add mpfr
-module add mpc
-# GCC_VERSION is provided by the build job
+# GCC_VERSION and OPENMPI_VERSION are provided by the build job
 module add gcc/${GCC_VERSION}
-# We need cmake to configure the build
 module add cmake
-# LAPACK has the external linear algebra libraries
-# see http://www.gromacs.org/Documentation/Installation_Instructions_5.0#linear-algebra-libraries
 module add lapack/3.6.0-gcc-${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-module add boost/1.59.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add boost/1.62.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add gsl/2.0
 
 echo "REPO_DIR is "
