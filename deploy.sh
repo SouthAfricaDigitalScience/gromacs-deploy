@@ -72,7 +72,7 @@ prepend-path CPATH             $::env(GMX_INCLUDE_DIR)
 append-path CFLAGS             "-I$::env(GMX_INCLUDE_DIR) -L$::env(GMX_DIR)/lib"
 
 MODULE_FILE
-) > ${CHEMISTRY_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+) > ${CHEMISTRY}/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 #### try to use gromacs
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}

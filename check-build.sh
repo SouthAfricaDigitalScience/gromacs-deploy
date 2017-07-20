@@ -35,7 +35,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION. Compiled for GCC ${GCC_VERSION} with OpenMPI version ${OPENMPI_VERSION}"
 setenv       GMX_VERSION       $VERSION
-setenv       GMX_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+setenv       GMX_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 setenv       GMXPREFIX         $::env(GMX_DIR)
 setenv       GMXBIN            $::env(GMX_DIR)/bin
 prepend-path PATH              $::env(GMXBIN)
@@ -51,8 +51,8 @@ append-path CFLAGS             "-I$::env(GMX_INCLUDE_DIR) -L$::env(GMX_DIR)/lib"
 MODULE_FILE
 ) > modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
-mkdir -p ${CHEMISTRY_MODULES}/${NAME}
-cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${CHEMISTRY_MODULES}/${NAME}
+mkdir -p ${CHEMISTRY}/${NAME}
+cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${CHEMISTRY}/${NAME}
 #  check if we can use it.
 echo "Testing the module"
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
