@@ -9,10 +9,11 @@ module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.62.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add gsl/2.0
-
+export OMP_NUM_THREADS=1
 echo ""
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
-echo "Making check"
+echo "Making check with ${OMP_NUM_THREADS} threads"
+export CTEST_TEST_TIMEOUT=3600
 make check
 echo $?
 echo "Running Make Install"
