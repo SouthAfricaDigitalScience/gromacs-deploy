@@ -31,17 +31,20 @@ cmake ../ \
 -DGMX_FFT_LIBRARY=fftw3 \
 -DFFTW_LIBRARY=${FFTW_DIR}/lib/libfftw3.so \
 -DFFTW_INCLUDE_DIR=${FFTW_DIR}/include \
+-DGMX_BLAS_USER=${OPENBLAS_DIR}/lib/libopenblas.so \
+-DBoost_DIR=${BOOST_DIR} \
 -DGMX_GSL=ON \
 -DGMX_DOUBLE=ON \
 -DGMX_GPU=OFF \
 -DGMX_OPENMP=ON \
 -DGMX_MPI=ON \
--DGMX_EXTERNAL_BLAS=on \
--DCMAKE_PREFIX_PATH='${BOOST_DIR}/boost;${LAPACK_DIR};${FFTW_DIR};${OPENMPI_DIR}' \
--DREGRESSIONTEST_DOWNLOAD=ON \
+-DGMX_TEST_NUMBER_PROCS=1 \
+-DGMX_EXTERNAL_BOOST=ON \
+-DGMX_EXTERNAL_BLAS=ON \
+-DREGRESSIONTEST_DOWNLOAD=OFF \
 -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
-make -j2
+make
 make install
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
@@ -74,6 +77,7 @@ append-path CFLAGS             "-I$::env(GMX_INCLUDE_DIR) -L$::env(GMX_DIR)/lib"
 MODULE_FILE
 ) > ${CHEMISTRY}/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
+module avail ${NAME}
 #### try to use gromacs
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 echo "binaries available are : "
