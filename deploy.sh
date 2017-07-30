@@ -2,14 +2,15 @@
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 module add deploy
-
 module add gcc/${GCC_VERSION}
 module add cmake
 module add lapack/3.6.0-gcc-${GCC_VERSION}
+module add openblas/0.2.15-gcc-${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.62.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add gsl/2.0
+
 
 echo "SOFT DIR is ${SOFT_DIR}"
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}

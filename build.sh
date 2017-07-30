@@ -5,9 +5,7 @@
 SOURCE_REPO="ftp://ftp.gromacs.org/pub/gromacs/"
 # NAME and VERSION are provided by the build job.
 SOURCE_FILE="${NAME}-${VERSION}.tar.gz"
-
 module add ci
-# GCC_VERSION and OPENMPI_VERSION are provided by the build job
 module add gcc/${GCC_VERSION}
 module add cmake
 module add lapack/3.6.0-gcc-${GCC_VERSION}
@@ -16,6 +14,7 @@ module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.62.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add gsl/2.0
+
 
 mkdir -p ${WORKSPACE}
 mkdir -p ${SRC_DIR}
