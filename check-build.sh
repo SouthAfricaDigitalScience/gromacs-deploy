@@ -69,7 +69,7 @@ env
 
 #  the rest comes from http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/
 # Get the pdb file
-wget https://files.rcsb.org/view/1AKI.pdb
+wget --no-check-certificate https://files.rcsb.org/view/1AKI.pdb
 echo 15 | gmx_mpi_d pdb2gmx -f 1AKI.pdb -o 1AKI_processed.gro -water spce
 gmx_mpi_d editconf -f 1AKI_processed.gro -o 1AKI_newbox.gro -c -d 1.0 -bt cubic
 gmx_mpi_d solvate -cp 1AKI_newbox.gro -cs spc216.gro -o 1AKI_solv.gro -p topol.top
