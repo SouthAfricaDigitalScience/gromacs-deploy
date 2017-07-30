@@ -48,7 +48,7 @@ cmake ../ \
 make
 make install
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+mkdir -p ${CHEMISTRY}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
