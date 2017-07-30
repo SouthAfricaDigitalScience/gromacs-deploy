@@ -17,15 +17,6 @@ module add fftw/3.3.4-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add boost/1.62.0-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 module add gsl/2.0
 
-echo "REPO_DIR is "
-echo $REPO_DIR
-echo "SRC_DIR is "
-echo $SRC_DIR
-echo "WORKSPACE is "
-echo $WORKSPACE
-echo "SOFT_DIR is"
-echo $SOFT_DIR
-
 mkdir -p ${WORKSPACE}
 mkdir -p ${SRC_DIR}
 mkdir -p ${SOFT_DIR}
@@ -63,7 +54,7 @@ export BOOST_ROOT=${BOOST_DIR}
 echo "Configuring the build"
 export CFLAGS="${CFLAGS} -fPIC"
 #-DFFTW_LIBRARY="${FFTW_DIR}/lib/libfftw3l.so;${FFTW_DIR}/lib/libfftw3f.so;${FFTW_DIR}/lib/libfftw3.so;${FFTW_DIR}/lib/libfftw3f_mpi.so;${FFTW_DIR}/lib/libfftw3f_omp.so;${FFTW_DIR}/lib/libfftw3f.so;${FFTW_DIR}/lib/libfftw3f_threads.so;${FFTW_DIR}/lib/libfftw3l_mpi.so;${FFTW_DIR}/lib/libfftw3l_omp.so;${FFTW_DIR}/lib/libfftw3l.so${FFTW_DIR}/lib/libfftw3l_threads.so;${FFTW_DIR}/lib/libfftw3_mpi.so${FFTW_DIR}/lib/libfftw3.so" \
-
+echo $BOOST_DIR
 cmake ../ \
 -G"Unix Makefiles" \
 -DCMAKE_C_COMPILER=mpicc \
